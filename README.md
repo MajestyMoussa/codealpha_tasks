@@ -56,3 +56,10 @@ Bitwise And operator.
     cout << " Inner: " << j << "\n"; // Executes 6 times (2 * 3)
   }
 }
+Number Guessing Game
+
+Develop a number guessing game where the
+computer randomly selects a number, and the
+player has to guess it. Provide hints like "too
+high" or "too low" to help the player guess the
+correct number
