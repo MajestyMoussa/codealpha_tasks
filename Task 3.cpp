@@ -34,7 +34,6 @@ int main()
     int n = rand() % 10; //range from to 0 and 10. so it will basically choose randomly any of these words. 
     word = words[n]; // word is equal to one of the country names in the array.
 
-
     switch (n) // a switch statement that will execute based on which word is chosen.  Range is from zero to 10. 
     {
     case 0: //if Mexico is chosen as the word to guess. Then give the player this hint. 
