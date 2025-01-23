@@ -63,3 +63,10 @@ computer randomly selects a number, and the
 player has to guess it. Provide hints like "too
 high" or "too low" to help the player guess the
 correct number
+Sudoku Solver
+The Sudoku solver consists of:
+
+A representation of the puzzle as a 9x9 grid.
+A backtracking algorithm (solveSudoku) to fill the empty cells while adhering to Sudoku rules.
+Helper functions (isSafe and printGrid) to check cell validity and display results.
+It efficiently handles puzzles of varying difficulty and can determine if no solution exists.
