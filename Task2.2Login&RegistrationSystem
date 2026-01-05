@@ -1,0 +1,113 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <functional>
+
+using namespace std;
+
+const string DATABASE_FILE = "users.txt";
+
+// Hash password (basic hashing for demo purposes)
+string hashPassword(const string& password) {
+    hash<string> hasher;
+    return to_string(hasher(password));
+}
+
+// Check if username already exists
+bool userExists(const string& username) {
+    ifstream file(DATABASE_FILE);
+    string user, pass;
+
+    while (file >> user >> pass) {
+        if (user == username) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Registration function
+void registerUser() {
+    string username, password;
+
+    cout << "\n--- Registration ---\n";
+    cout << "Enter username: ";
+    cin >> username;
+
+    if (username.length() < 4) {
+        cout << "❌ Username must be at least 4 characters long.\n";
+        return;
+    }
+
+    if (userExists(username)) {
+        cout << "❌ Username already exists.\n";
+        return;
+    }
+
+    cout << "Enter password: ";
+    cin >> password;
+
+    if (password.length() < 6) {
+        cout << "❌ Password must be at least 6 characters long.\n";
+        return;
+    }
+
+    ofstream file(DATABASE_FILE, ios::app);
+    file << username << " " << hashPassword(password) << endl;
+
+    cout << "✅ Registration successful!\n";
+}
+
+// Login function
+void loginUser() {
+    string username, password, storedUser, storedPass;
+
+    cout << "\n--- Login ---\n";
+    cout << "Enter username: ";
+    cin >> username;
+    cout << "Enter password: ";
+    cin >> password;
+
+    ifstream file(DATABASE_FILE);
+    string hashedInput = hashPassword(password);
+
+    while (file >> storedUser >> storedPass) {
+        if (storedUser == username && storedPass == hashedInput) {
+            cout << "✅ Login successful! Welcome, " << username << ".\n";
+            return;
+        }
+    }
+
+    cout << "❌ Invalid username or password.\n";
+}
+
+// Main menu
+int main() {
+    int choice;
+
+    do {
+        cout << "\n=== Login & Registration System ===\n";
+        cout << "1. Register\n";
+        cout << "2. Login\n";
+        cout << "3. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                registerUser();
+                break;
+            case 2:
+                loginUser();
+                break;
+            case 3:
+                cout << "👋 Exiting program.\n";
+                break;
+            default:
+                cout << "❌ Invalid choice.\n";
+        }
+    } while (choice != 3);
+
+    return 0;
+}
