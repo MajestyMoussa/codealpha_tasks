@@ -123,4 +123,32 @@ ________________________________________
 A high-grade in a high-credit course boosts CGPA more than in a low-credit course.
 ________________________________________
 If you want, I can also explain this in one-line exam answers, real-life analogy, or with a diagram 😊
+--------------------------------------------------------------------------------
+is a simple, complete C++ Login and Registration System that meets all your requirements.
+It uses file storage, input validation, duplicate username checking, and password hashing (basic, for learning purposes).
+
+⚠️ Note: This is suitable for academic/projects. For real systems, use strong cryptographic libraries (e.g., bcrypt, OpenSSL).
+
+📁 How It Works
+
+User data is stored in users.txt
+
+Format:
+
+username hashed_password
+
+
+Passwords are not stored in plain text
+
+Duplicate usernames are prevented
+
+✅ Features Implemented
+
+✔ Registration with validation
+✔ Duplicate username check
+✔ Secure (hashed) password storage
+✔ Login verification
+✔ Clear success/error messages
+---------------------------------------------------------------------
+
 
