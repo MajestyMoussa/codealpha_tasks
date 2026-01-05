@@ -70,3 +70,57 @@ A representation of the puzzle as a 9x9 grid.
 A backtracking algorithm (solveSudoku) to fill the empty cells while adhering to Sudoku rules.
 Helper functions (isSafe and printGrid) to check cell validity and display results.
 It efficiently handles puzzles of varying difficulty and can determine if no solution exists.
+CGPA stands for Cumulative Grade Point Average.
+📘 Meaning
+CGPA is the overall average of a student’s grade points across all courses or semesters completed so far, weighted by their credit hours.
+🧮 Simple Explanation
+•	Each course has credit hours
+•	Each course has a grade point
+•	CGPA combines all of them into one final average
+📐 Formula
+CGPA=∑(Grade Point×Credit Hours)∑(Credit Hours)\text{CGPA} = \frac{\sum (\text{Grade Point} \times \text{Credit Hours})}{\sum (\text{Credit Hours})}CGPA=∑(Credit Hours)∑(Grade Point×Credit Hours) 
+🎓 Example
+If a student completes several courses over multiple semesters, CGPA reflects their overall academic performance, not just one semester.
+Let me know if you want a one-line definition for an exam or assignment 😊
+what is the difference between grade points and credit hours 
+The difference between grade points and credit hours is simple but very important in GPA/CGPA calculations.
+________________________________________
+📌 Grade Points
+Grade points represent how well you performed in a course.
+Examples
+Letter Grade	Grade Point
+A	4.0
+A−	3.7
+B+	3.3
+B	3.0
+C	2.0
+F	0.0
+✔ Higher grade points = better performance
+✔ Based on exam scores or assessments
+________________________________________
+📌 Credit Hours
+Credit hours represent how important or heavy a course is.
+Examples
+Course Type	Credit Hours
+Lab course	1–2 credits
+Regular theory	3 credits
+Major/Project	4–5 credits
+✔ More credit hours = more weight in CGPA
+✔ Indicates time spent per week on a course
+________________________________________
+🧮 How They Work Together
+To calculate GPA/CGPA:
+Grade Points Earned=Grade Point×Credit Hours\text{Grade Points Earned} = \text{Grade Point} \times \text{Credit Hours}Grade Points Earned=Grade Point×Credit Hours 
+Example
+•	Grade Point = 4.0
+•	Credit Hours = 3
+4.0×3=12.04.0 \times 3 = 12.04.0×3=12.0 
+This course contributes 12 grade points to your CGPA.
+________________________________________
+🧠 Simple Analogy
+•	Grade Point = your score
+•	Credit Hour = the course’s weight
+A high-grade in a high-credit course boosts CGPA more than in a low-credit course.
+________________________________________
+If you want, I can also explain this in one-line exam answers, real-life analogy, or with a diagram 😊
+
