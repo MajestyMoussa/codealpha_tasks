@@ -152,5 +152,30 @@ Duplicate usernames are prevented
 ✔ Login verification
 ✔ Clear success/error messages
 ---------------------------------------------------------------------
+📌 Class Design Overview
+Transaction
+•	Transaction ID
+•	Type (Deposit / Withdraw / Transfer)
+•	Amount
+•	Timestamp
+Account	
+•	Account number
+•	Balance
+•	Transaction history
+•	Deposit, withdraw, transfer methods
+Customer
+•	Customer ID
+•	Name
+•	Multiple accounts
+Why Use emplace_back Instead of push_back?
+emplace_back	push_back
+Constructs in-place	Creates then copies
+Faster	Slightly slower
+Modern C++	Older style
+________________________________________
+🧪 Example in Isolation
+vector<Transaction> transactions;
 
-
+transactions.emplace_back("Deposit", 5000);
+transactions.emplace_back("Withdraw", 2000);
+This line removes the extra newline character (\n) added by ctime() so the timestamp prints neatly on one line.
