@@ -99,7 +99,7 @@ C	2.0
 F	0.0
 ✔ Higher grade points = better performance
 ✔ Based on exam scores or assessments
-________________________________________
+________________________________________--
 📌 Credit Hours
 Credit hours represent how important or heavy a course is.
 Examples
