@@ -1,0 +1,140 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <ctime>
+#include <iomanip>
+
+using namespace std;
+
+/* -------------------- Transaction Class -------------------- */
+class Transaction {
+private:
+    string type;
+    double amount;
+    string timestamp;
+
+public:
+    Transaction(string t, double amt) : type(t), amount(amt) {
+        time_t now = time(0);
+        timestamp = ctime(&now);
+        timestamp.pop_back(); // remove newline
+    }
+
+    void display() const {
+        cout << left << setw(15) << type
+             << setw(10) << amount
+             << timestamp << endl;
+    }
+};
+
+/* -------------------- Account Class -------------------- */
+class Account {
+private:
+    int accountNumber;
+    double balance;
+    vector<Transaction> transactions;
+
+public:
+    Account(int accNo) : accountNumber(accNo), balance(0.0) {}
+
+    int getAccountNumber() const {
+        return accountNumber;
+    }
+
+    double getBalance() const {
+        return balance;
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+        transactions.emplace_back("Deposit", amount);
+    }
+
+    bool withdraw(double amount) {
+        if (amount > balance) {
+            cout << "Insufficient balance!\n";
+            return false;
+        }
+        balance -= amount;
+        transactions.emplace_back("Withdraw", amount);
+        return true;
+    }
+
+    bool transfer(Account &toAccount, double amount) {
+        if (withdraw(amount)) {
+            toAccount.deposit(amount);
+            transactions.emplace_back("Transfer Out", amount);
+            return true;
+        }
+        return false;
+    }
+
+    void showTransactions() const {
+        cout << "\nTransaction History (Account " << accountNumber << ")\n";
+        cout << left << setw(15) << "Type"
+             << setw(10) << "Amount"
+             << "Date & Time\n";
+        cout << "------------------------------------------\n";
+
+        for (const auto &t : transactions) {
+            t.display();
+        }
+    }
+
+    void displayAccountInfo() const {
+        cout << "\nAccount Number: " << accountNumber
+             << "\nBalance: " << balance << endl;
+    }
+};
+
+/* -------------------- Customer Class -------------------- */
+class Customer {
+private:
+    int customerID;
+    string name;
+    vector<Account> accounts;
+
+public:
+    Customer(int id, string n) : customerID(id), name(n) {}
+
+    void addAccount(int accNo) {
+        accounts.emplace_back(accNo);
+    }
+
+    Account* getAccount(int accNo) {
+        for (auto &acc : accounts) {
+            if (acc.getAccountNumber() == accNo)
+                return &acc;
+        }
+        return nullptr;
+    }
+
+    void displayCustomerInfo() const {
+        cout << "\nCustomer ID: " << customerID
+             << "\nName: " << name << endl;
+    }
+};
+
+/* -------------------- Main Function -------------------- */
+int main() {
+    Customer customer1(1, "John Doe");
+
+    customer1.addAccount(1001);
+    customer1.addAccount(1002);
+
+    Account* acc1 = customer1.getAccount(1001);
+    Account* acc2 = customer1.getAccount(1002);
+
+    acc1->deposit(5000);
+    acc1->withdraw(1500);
+    acc1->transfer(*acc2, 2000);
+
+    customer1.displayCustomerInfo();
+    acc1->displayAccountInfo();
+    acc1->showTransactions();
+
+    acc2->displayAccountInfo();
+    acc2->showTransactions();
+
+    return 0;
+}
